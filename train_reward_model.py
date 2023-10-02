@@ -187,7 +187,7 @@ if __name__ == "__main__":
         kwargs = {"load_in_4bit": args.load_in_4bit}
     else:
         kwargs = {}
-    model = AutoModelForSequenceClassification.from_pretrained(args.model_path, revision=args.revision, num_labels=1, **kwargs)
+    model = AutoModelForSequenceClassification.from_pretrained(args.model_path, revision=args.revision, num_labels=1, trust_remote_code=True, **kwargs)
     model.config.pad_token_id = tokenizer.pad_token_id
     model.resize_token_embeddings(len(tokenizer))
 
